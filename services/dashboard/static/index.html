@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAX Operator</title>
+<style>
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --text: #1b1f24; --muted: #5f6b7a; --line: #dde2e8;
+  --accent: #2563eb; --good: #15803d; --bad: #b91c1c; --warn: #a16207; --code: #f1f3f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111418; --panel: #1a1f25; --text: #e6e9ed; --muted: #97a2b0; --line: #2c333c;
+          --accent: #6ea0ff; --good: #4ade80; --bad: #f87171; --warn: #facc15; --code: #232a32; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+         padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--panel); }
+header h1 { margin: 0; font-size: 17px; }
+header .sub { color: var(--muted); font-size: 12px; }
+header > * { min-width: 0; max-width: 100%; }
+main { max-width: 1280px; margin: 0 auto; padding: 16px 20px 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+section { min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+section h2 { margin: 0 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 10px 16px; }
+.stat .k { color: var(--muted); font-size: 12px; }
+.stat .v { font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+label { display: grid; gap: 3px; font-size: 12px; color: var(--muted); }
+label.inline { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; font-size: 13px; }
+input, select { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+                border-radius: 6px; padding: 5px 8px; min-width: 0; }
+button { font: inherit; border: 1px solid var(--line); background: var(--bg); color: var(--text);
+         border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.danger { color: var(--bad); border-color: var(--bad); }
+button:disabled { opacity: .45; cursor: default; }
+pre, code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+pre { background: var(--code); border-radius: 6px; padding: 8px 10px; margin: 6px 0 0; overflow: auto;
+      max-height: 360px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.muted { color: var(--muted); } .good { color: var(--good); } .bad { color: var(--bad); } .warn { color: var(--warn); }
+.cameras { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 10px; }
+.cameras figure { margin: 0; } .cameras figcaption { font-size: 12px; color: var(--muted); }
+.cameras img { width: 100%; border-radius: 6px; background: var(--code); aspect-ratio: 4 / 3; object-fit: contain; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; }
+.scroll { overflow-x: auto; }
+details > summary { cursor: pointer; color: var(--accent); }
+#message { min-height: 1.4em; }
+#paths, #liveStatus, #liveMetrics, #launchNote { white-space: pre-line; overflow-wrap: anywhere; }
+#run { max-width: 100%; }
+#artifactImage { max-width: 100%; border-radius: 6px; }
+#video { width: 100%; margin-top: 10px; border-radius: 6px; background: #000; }
+@media (max-width: 640px) { header, main { padding-left: 16px; padding-right: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>RAX Operator</h1>
+    <div class="sub">Privileged operator view · never share this URL with an agent</div>
+  </div>
+  <div class="row">
+    <select id="run" aria-label="Session"></select>
+    <label class="inline"><input id="history" type="checkbox"> Earlier runs</label>
+    <button id="refresh" type="button">Refresh</button>
+  </div>
+</header>
+<main>
+  <div id="message" class="muted"></div>
+
+  <section>
+    <details id="setup">
+      <summary id="setupTitle">New session</summary>
+      <form id="researchForm" class="grid" style="margin-top:10px">
+        <label>Task <select name="task" class="taskSelect"></select></label>
+        <label>Observation profile <select name="observation_profile">
+          <option value="rgbd">RGB + depth and camera geometry</option><option value="rgb-only">RGB only</option></select></label>
+        <label title="The simulators' GPU; the agent and its bundles have none">Simulator GPU <input name="sim_gpu" required></label>
+        <label>Demonstration <select name="demonstration_context" class="demoSelect"></select></label>
+        <label>Task rules <select name="task_rules"><option value="public">Public wiki rubric</option><option value="code-summary">Public rubric + rules from the task code</option></select></label>
+        <label>Agent CLI <select name="agent_cli"><option value="codex">codex</option><option value="claude">claude</option><option value="dsh">DeepSeek Harness</option></select></label>
+        <label>Agent provider <select name="agent_provider"><option value="openrouter">openrouter</option><option value="claude-login">claude experiment login</option><option value="anthropic">anthropic</option></select></label>
+        <label title="Model reasoning effort for the selected agent CLI">Reasoning effort <select name="agent_effort"><option value="xhigh">xhigh</option><option value="max">max</option></select></label>
+        <label title="More episodes than the collection has layouts cycle through it again">Exploration episodes <input name="episodes" type="number" min="2" max="1000"></label>
+        <label>Exploration environments <input name="exploration_envs" type="number" min="1" max="8"></label>
+        <label title="0 = one subagent per environment when there are several, none with one environment">Max subagents <input name="subagents" type="number" min="0" max="8"></label>
+        <label title="One evaluation mode per session. Code alone: the agent submits one rehearsed bundle, run alone on the held-out layouts. Live copies: no bundle; once the exploration episodes are spent, copies of the agent play the held-out layouts live">Evaluation <select name="agent_formal"><option value="off">Code alone (submitted bundle)</option><option value="on">Live copies of the agent</option></select></label>
+        <label>Live-copy context <select name="formal_context"><option value="compact">Compact: summarized conversation</option><option value="resume">Resume: whole conversation</option><option value="clear">Clear: transferred folders only</option></select></label>
+        <label title="Comma-separated workspace folders carried into each formal copy (memory, code, handoff)">Transferred folders <input name="transfer_parts"></label>
+        <label>Transfer cap (MB) <input name="transfer_mb" type="number" min="1" max="1024"></label>
+        <label title="A separate analyst reads each finished exploration episode's ground-truth end state and writes a review of why it failed; the agent reads the reviews. Formal episodes are never reviewed. Benchmarks with simulator ground truth only">Episode reviews <select name="episode_reviews"><option value="off">Off</option><option value="on">On (exploration only)</option><option value="detailed">Detailed: ground-truth report, exact numbers</option></select></label>
+        <label title="Three complete expert episodes of the task (teleoperation on other layouts), mounted read-only at runtime/experts for the exploring agent. Benchmarks with expert episodes only">Expert episodes <select name="expert_demonstrations"><option value="0">None</option><option value="3">Three (runtime/experts)</option></select></label>
+        <label title="What the expert episodes hold: everything recorded, or the camera observations only (video, previews and depth; no commanded references, measured motion or object states). Benchmarks with camera-only expert sets only">Expert content <select name="expert_content"><option value="full">Full recordings</option><option value="images">Camera only (video, depth)</option></select></label>
+        <label title="Install the transfer-handoff skill so this trial can be an adaptation source">Write handoff <select name="write_handoff"><option value="off">Off</option><option value="on">On</option></select></label>
+        <label title="Run ID of a finished auto-research trial whose agent continues in this trial's environment (task and layouts)">Adaptation source <input name="adaptation_source" placeholder="empty: new agent"></label>
+        <label>Adaptation context <select name="adaptation_context"><option value="compact">Compact: summarized conversation</option><option value="resume">Resume: whole conversation</option><option value="clear">Clear: transferred folders only</option></select></label>
+        <label>First exploration layout <input name="exploration_start_seed" type="number" min="0"></label>
+        <label>Formal episodes <input name="formal_episodes" type="number" min="1" max="150"></label>
+        <label>Formal workers <input name="formal_workers" type="number" min="1" max="16"></label>
+        <label>First formal layout <input name="formal_seed" type="number" min="0"></label>
+        <label>Formal collection <input name="formal_eval_seed" type="number" min="0"></label>
+        <label>Workspace GiB <input name="workspace_gib" type="number" min="1" max="1024"></label>
+        <div class="row" style="align-self:end"><button class="primary" id="prepare" type="submit" disabled>Prepare</button></div>
+      </form>
+      <p id="timeouts" class="muted"></p>
+    </details>
+  </section>
+
+  <section>
+    <h2 id="runTitle">Session</h2>
+    <div class="grid" id="stats"></div>
+    <pre id="command" class="muted">Nothing selected.</pre>
+    <div class="row" style="margin-top:8px">
+      <button class="primary" id="launch" type="button" disabled>Launch</button>
+      <button id="resume" type="button" disabled>Resume</button>
+      <button class="danger" id="stop" type="button" disabled>Stop</button>
+      <button id="copy" type="button" data-copy="command">Copy command</button>
+    </div>
+    <p id="launchNote" class="muted"></p>
+    <p id="paths" class="mono muted"></p>
+  </section>
+
+  <section>
+    <h2>Live cameras</h2>
+    <p id="liveStatus" class="muted">No native observation yet.</p>
+    <p id="liveMetrics" class="mono muted"></p>
+    <div class="cameras" id="cameras"></div>
+  </section>
+
+  <section>
+    <h2>Trajectory videos</h2>
+    <p class="muted">Every simulator episode of the selected run, recorded by the simulator
+      (its cameras, at the simulator's control rate).</p>
+    <div class="row">
+      <label class="inline">Speed <select id="speed">
+        <option value="0.5">0.5×</option><option value="1" selected>1×</option>
+        <option value="2">2×</option><option value="4">4×</option><option value="8">8×</option>
+      </select></label>
+      <a id="download" hidden download>Download MP4</a>
+      <span id="playing" class="muted"></span>
+    </div>
+    <div class="row" id="reviewControls" hidden>
+      <span id="reviewsInfo" class="muted"></span>
+    </div>
+    <video id="video" controls preload="metadata" hidden></video>
+    <div id="reviewPanel" hidden>
+      <div class="row"><strong id="reviewTitle"></strong> <button type="button" id="reviewClose">Close</button></div>
+      <pre id="reviewText" style="white-space: pre-wrap"></pre>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>#</th><th>Mode</th><th>Episode</th><th>Steps</th><th>Result</th><th>Score</th><th>Video</th><th>Review</th></tr></thead>
+        <tbody id="episodes"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="researchRecords">
+    <h2>Results</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Run</th><th>Bundle</th><th>Task complete</th><th>Reason</th><th>Details</th></tr></thead>
+        <tbody id="results"></tbody>
+      </table>
+    </div>
+    <details id="artifactViewer" style="margin-top:10px">
+      <summary>Artifact viewer</summary>
+      <p id="artifactPath" class="mono"></p>
+      <img id="artifactImage" alt="Selected artifact" hidden>
+      <pre id="artifactText" hidden></pre>
+    </details>
+  </section>
+
+  <section>
+    <h2>Logs and configuration</h2>
+    <details><summary>Agent log</summary><pre id="agentLog"></pre></details>
+    <details id="frontendLogPanel"><summary>MCP frontend log</summary><pre id="frontendLog"></pre></details>
+    <details><summary>Configuration and raw state</summary><pre id="configuration"></pre></details>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

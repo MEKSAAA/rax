@@ -1,0 +1,10 @@
+# Python packages in the offline agent image (scripts/build_agent_image.py). The agent's
+# exploration code and its frozen bundles run with exactly these; nothing is installed later.
+torch==2.7.0+cu128
+torchvision==0.22.0+cu128
+numpy==1.26.4
+scipy==1.15.3
+pillow==11.3.0
+h5py==3.16.0
+# Keep NumPy 1.26 compatibility; newer OpenCV wheels may require NumPy 2.
+opencv-python-headless==4.11.0.86

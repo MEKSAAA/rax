@@ -1,0 +1,35 @@
+# Pins of every external source and environment. Sourced by the setup scripts.
+
+# Miniforge installs the conda that builds runtime/envs/host and the simulator environments.
+MINIFORGE_VERSION=26.7.2-0
+MINIFORGE_SHA256=281b0ac7d550802efc81af633225a5e6116d29ae72f3ab4eae7168c3931a4c05
+# The host environment (scripts/setup_host_env.sh): the harness's own packages.
+HOST_PYTHON_VERSION=3.12
+HOST_NUMPY_VERSION=2.5.2
+HOST_PILLOW_VERSION=12.3.0
+HOST_JINJA2_VERSION=3.1.6
+HOST_MSGPACK_VERSION=1.2.3
+HOST_PYYAML_VERSION=6.0.3
+HOST_IMAGEIO_VERSION=2.38.0
+HOST_IMAGEIO_FFMPEG_VERSION=0.6.0
+HOST_SCIPY_VERSION=1.18.1
+HOST_PYTEST_VERSION=9.1.1
+
+# LIBERO-PRO simulator backend (official, unmodified), used only by the simulator subprocess in
+# runtime/envs/libero_pro: the official LIBERO install (Python 3.8.13, requirements.txt verbatim)
+# plus three documented additions (docs/LIBERO_PRO_BACKEND.md): MuJoCo pinned (upstream leaves it
+# open and >= 3.4 breaks LIBERO's init-state settling), the CPU build of the official torch version
+# (only torch.load of init states runs in the simulator), and msgpack for the simulator RPC.
+LIBERO_PRO_URL=https://github.com/Zxy-MLlab/LIBERO-PRO.git
+LIBERO_PRO_COMMIT=eafdb809426b13153aa1e4c42d6601844217dfec
+LIBERO_PRO_PYTHON_VERSION=3.8.13
+LIBERO_PRO_MUJOCO_VERSION=3.2.3
+LIBERO_PRO_TORCH_VERSION=1.11.0
+LIBERO_PRO_TORCHVISION_VERSION=0.12.0
+# HF zhouxueyang/LIBERO-Pro commit: the official perturbation BDDLs and init states (swap, object, lan,
+# task for the four suites), linked into runtime/libero-pro by scripts/setup_libero_pro_data.py.
+LIBERO_PRO_DATA_REPO=zhouxueyang/LIBERO-Pro
+LIBERO_PRO_DATA_REVISION=c86fc3b8293185a6f373677018ff3e37f8391602
+# HF yifengzhu-hf/LIBERO-datasets commit: LIBERO's official human demonstrations (scripts/setup_libero_pro_demos.py).
+LIBERO_DATASETS_REPO=yifengzhu-hf/LIBERO-datasets
+LIBERO_DATASETS_REVISION=f13aa24a3da8c43c7225569f28c562979fa0e35a
