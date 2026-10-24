@@ -8,7 +8,7 @@ for example, can run against a self-hosted DeepSeek endpoint.
 
 ## Choose a harness
 
-The following backends are available on the DexJoCo, HumanoidArena and
+The following backends are available on the DexJoCo, HumanoidArena, LIBERO-PRO and
 RoboDojo/BEHAVIOR simulation branches, in native and container execution.
 
 | Harness | `agent_cli` | Model interface | Provider options |

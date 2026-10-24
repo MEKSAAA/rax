@@ -15,6 +15,8 @@
 
 ## 📰 News
 
+- **[2026-10-24]** 🌿 **LIBERO and LIBERO-PRO branch released**, as a container and a native branch,
+  with Codex CLI, Claude Code, DeepSeek Harness and Kimi Code. See [Branches](#-branches).
 - **[2026-10-21]** 🔥 **DeepSeek and Kimi are here, and you can serve the model yourself!**
   The simulation branches now run **DeepSeek Harness** and **Kimi Code** alongside Codex
   CLI and Claude Code, natively or in a container. **Try local serving:** three commands
@@ -48,6 +50,8 @@
 | [`humanoid-arena/native`](https://github.com/robot-agent-exploration/rax/tree/humanoid-arena/native) | 🖥️ Sim | HumanoidArena with the agent CLIs running natively, sandboxed by the CLI itself. | ✅ available |
 | [`dexjoco/container`](https://github.com/robot-agent-exploration/rax/tree/dexjoco/container) | 🖥️ Sim | DexJoCo (MuJoCo): Franka arms with Allegro hands on one GPU. The agent runs in an offline Docker container; formal evaluation uses the official evaluation episodes. | ✅ available |
 | [`dexjoco/native`](https://github.com/robot-agent-exploration/rax/tree/dexjoco/native) | 🖥️ Sim | DexJoCo with the agent CLIs running natively, sandboxed by the CLI itself. | ✅ available |
+| [`libero-pro/container`](https://github.com/robot-agent-exploration/rax/tree/libero-pro/container) | 🖥️ Sim | LIBERO and LIBERO-PRO (robosuite, MuJoCo): a Franka Panda with a parallel gripper on the four LIBERO suites, on one GPU. The agent runs in an offline Docker container; formal evaluation uses LIBERO's official init states or a LIBERO-PRO perturbation of them. | ✅ available |
+| [`libero-pro/native`](https://github.com/robot-agent-exploration/rax/tree/libero-pro/native) | 🖥️ Sim | LIBERO and LIBERO-PRO with the agent CLIs running natively, sandboxed by the CLI itself. | ✅ available |
 | [`real/franka`](https://github.com/robot-agent-exploration/rax/tree/real/franka) | 🦾 Real | Franka FR3: one 7-DoF arm, Franka Hand, three ZED cameras. | ✅ available |
 | [`real/rainbow`](https://github.com/robot-agent-exploration/rax/tree/real/rainbow) | 🦾 Real | Rainbow RB-Y1: wheeled base, 6-joint torso, two 7-DoF arms, grippers, head ZED 2i. | ✅ available |
 
@@ -90,6 +94,7 @@ that runs without the agent.
 | Run the simulation benchmarks without Docker (e.g. on a cluster that does not allow containers) | [`robodojo-behavior/native`](https://github.com/robot-agent-exploration/rax/tree/robodojo-behavior/native) |
 | Run the humanoid benchmarks | [`humanoid-arena/container`](https://github.com/robot-agent-exploration/rax/tree/humanoid-arena/container) or [`humanoid-arena/native`](https://github.com/robot-agent-exploration/rax/tree/humanoid-arena/native) |
 | Run the dexterous-hand benchmarks | [`dexjoco/container`](https://github.com/robot-agent-exploration/rax/tree/dexjoco/container) or [`dexjoco/native`](https://github.com/robot-agent-exploration/rax/tree/dexjoco/native) |
+| Run LIBERO or its LIBERO-PRO perturbations | [`libero-pro/container`](https://github.com/robot-agent-exploration/rax/tree/libero-pro/container) or [`libero-pro/native`](https://github.com/robot-agent-exploration/rax/tree/libero-pro/native) |
 | Run RAX on a Franka or an RB-Y1 | [`real/franka`](https://github.com/robot-agent-exploration/rax/tree/real/franka) or [`real/rainbow`](https://github.com/robot-agent-exploration/rax/tree/real/rainbow) |
 | Bring RAX to a new robot | [Real-robot adaptation guide](docs/REAL_ROBOT_ADAPTATION.md), then fork the closest real-robot branch |
 | Port the agent skills to a new robot | [`skills/`](skills/README.md) |
@@ -242,7 +247,8 @@ The simulation branches build on [RoboDojo](https://github.com/RoboDojo-Benchmar
 [BEHAVIOR-1K](https://github.com/StanfordVL/BEHAVIOR-1K),
 [HumanoidArena](https://github.com/William-wAng618/HumanoidArena),
 [SONIC](https://huggingface.co/nvidia/GEAR-SONIC),
-[DexJoCo](https://github.com/brave-eai/dexjoco), [MuJoCo](https://mujoco.org),
+[DexJoCo](https://github.com/brave-eai/dexjoco), [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO),
+[LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), [robosuite](https://robosuite.ai), [MuJoCo](https://mujoco.org),
 NVIDIA Isaac Sim and Isaac Lab, and [cuRobo](https://github.com/NVlabs/curobo).
 Each branch lists the exact versions it pins.
 
