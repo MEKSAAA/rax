@@ -1,0 +1,40 @@
+# Machine-local storage and upstream checkouts reconstructed by bootstrap.
+/runtime
+/LIBERO-PRO
+/local_tests/*
+!/local_tests/unit/
+!/local_tests/README.md
+!/local_tests/goldens/
+
+# Local orchestration state and caches.
+/.agents
+/.codex
+/.pytest_cache
+/.ruff_cache
+/.local-runtime
+**/__pycache__/
+*.py[cod]
+*.log
+
+# IDE and OS metadata.
+.DS_Store
+.idea/
+.vscode/
+# Isolated local feature checkouts.
+/.worktrees/
+
+# Private agent state and credentials, at any depth.
+.git/
+.claude/
+.codex/
+.agents/
+secrets/
+.env
+.env.*
+!.env.example
+!.env.sample
+.netrc
+.npmrc
+.pypirc
+*.key
+*.pem
