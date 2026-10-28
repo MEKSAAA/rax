@@ -42,11 +42,11 @@ def trial_status(config, expected, returncode=0):
     return 'incomplete_trial'
 
 
-def run_preflight(root, task, gpu):
+def run_preflight(root, task, gpu, collection=2):
     """Fail before spending model tokens if this task cannot reset/observe/step."""
     with (root / f'{task}.preflight.log').open('a') as log:
         result = subprocess.run([sys.executable, 'scripts/robowits_doctor.py',
-                                 '--task', task, '--gpu', str(gpu)],
+                                 '--task', task, '--gpu', str(gpu), '--collection', str(collection)],
                                 cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
     return result.returncode == 0
 
@@ -57,9 +57,15 @@ def report(root, manifest):
         path = Path(entry.get('config', '/nonexistent')).parent / 'formal-scores.json'
         scores = json.loads(path.read_text()) if path.is_file() else {}
         episodes = scores.get('episodes', [])
+        progress = None
+        if scores:
+            from services.robowits.metrics import formal_progress
+            progress = formal_progress(path.parent, scores)
+            write(path.parent / 'formal-progress.json', progress)
         success = sum(float(e.get('score', 0) or 0) for e in episodes)
         rows.append(dict(task=task, status=entry['status'], successes=success,
                          expected=manifest['formal_episodes'], recorded=len(episodes),
+                         native_progress=progress,
                          complete=bool(scores.get('score_complete', False)),
                          config=entry.get('config')))
     total = len(rows) * manifest['formal_episodes']
@@ -82,6 +88,7 @@ def main():
     p.add_argument('--suite', choices=['robowits-10','all-seed'], default='robowits-10')
     p.add_argument('--gpu', default='1')
     p.add_argument('--episodes', type=int, default=8)
+    p.add_argument('--exploration-collection', type=int, choices=[0,2], default=2, help='2: canonical source scene; 0: legacy unvalidated random resets')
     p.add_argument('--formal-episodes', type=int, default=5)
     p.add_argument('--adopt-config', type=Path, action='append', default=[], help='Use an existing trial; does not launch it again')
     p.add_argument('--report-only', action='store_true')
@@ -102,17 +109,21 @@ def main():
         manifest = json.loads(manifest_path.read_text())
         if a.tasks and set(a.tasks) != set(manifest['tasks']):
             p.error('Existing manifest has a different task list; use a new output directory or explicitly migrate the queue')
+        if not a.report_only and manifest.get('exploration_collection',0) != a.exploration_collection:
+            p.error('Do not mix exploration protocols; use a new output directory for the repaired protocol')
         if not a.report_only and (manifest['episodes'] != a.episodes or manifest['formal_episodes'] != a.formal_episodes):
             p.error('Resume must preserve the original episode budgets')
     else:
         profile = tomllib.loads((a.provider_home / (a.profile + '.config.toml')).read_text())
         manifest = dict(benchmark='robowits', suite='custom' if a.tasks else a.suite, model=profile.get('rax', {}).get('model'), provider_profile=a.profile,
-            episodes=a.episodes, formal_episodes=a.formal_episodes,
+            episodes=a.episodes, formal_episodes=a.formal_episodes, exploration_collection=a.exploration_collection,
             created=time.time(), source_commit=subprocess.check_output(['git','-C',str(T.source_root()),'rev-parse','HEAD'],text=True).strip(),
             tasks={t:dict(status='pending', dataset_sha256=hashlib.sha256(T.eval_path(t).read_bytes()).hexdigest()) for t in selected})
     for config in a.adopt_config:
         data = json.loads(config.read_text())
         task = data['task']
+        if data.get('eval_seed',0) != manifest.get('exploration_collection',0):
+            p.error('Adopted trial has a different exploration protocol')
         if data.get('benchmark') != 'robowits' or len(data['exploration_seeds']) != manifest['episodes'] or data['formal_episodes'] != manifest['formal_episodes']:
             p.error('Adopted trial must match benchmark and budgets')
         if task not in manifest['tasks']: p.error(f'Adopted task {task} is outside batch')
@@ -129,14 +140,14 @@ def main():
         write(manifest_path, manifest)
     for task, entry in manifest['tasks'].items():
         if entry['status'] != 'pending': continue
-        if not a.skip_preflight and not run_preflight(root, task, a.gpu):
+        if not a.skip_preflight and not run_preflight(root, task, a.gpu, a.exploration_collection):
             entry.update(status='infrastructure_error', phase='preflight', finished=time.time())
             write(manifest_path, manifest); report(root, manifest)
             continue
         try:
             prepared = subprocess.check_output([sys.executable,'scripts/configure_auto_research.py',
                 '--benchmark','robowits','--task',task,'--sim-gpu',a.gpu,
-                '--episodes',str(a.episodes),'--formal-episodes',str(a.formal_episodes),
+                '--episodes',str(a.episodes),'--exploration-collection',str(a.exploration_collection),'--formal-episodes',str(a.formal_episodes),
                 '--formal-workers','1','--exploration-envs','1','--subagents','0',
                 '--external-perception','off','--demonstration-context','none'],cwd=ROOT,text=True)
         except subprocess.CalledProcessError as exc:

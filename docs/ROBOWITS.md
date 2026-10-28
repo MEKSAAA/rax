@@ -1,8 +1,9 @@
 # RAX on RoboWits (Genesis 1.3.1)
 
 **Implementation audit:** [confirmed protocol and infrastructure issues](ROBOWITS_AUDIT.md).
-The initial random-reset protocol is not yet validated as equivalent to the official tasks.
-The active batch is draining its current task and will pause for repair.
+The initial random-reset protocol changed task constraints and is retained only as legacy
+collection 0. New trials default to canonical source-scene exploration (collection 2),
+selected by the user after the audit. Old and new trials must use separate batch directories.
 
 The `robowits` backend runs RAX's native exploration → policy development → frozen
 rehearsal → submission → held-out evaluation workflow. The policy receives RGB-D
@@ -34,11 +35,18 @@ RAX's hidden-path policy excludes them. First use compiles Genesis kernels.
 ## Protocol
 
 - Catalog: 30 seed tasks and 170 mutations, `services/robowits/catalog.json`.
-- Exploration collection 0: random resets, RNG seed `10000 + layout_id`.
+- Exploration collection 2 (default): native source-defined scene, with random
+  placement bypassed using the source sampler's canonical-reset mechanism. All
+  exploration episodes repeat the same initial layout; they are not independent
+  randomized-layout rehearsals. No official evaluation JSON is loaded.
+- Collection 0: legacy random reset, unvalidated task semantics; explicit opt-in only.
 - Formal collection 1: released evaluation JSON, explicit dataset index, RNG seed 42.
 - Native EE_ABS controller, 14-dimensional bimanual actions, ~30 Hz; 1000 control
   steps, matching RoboWits `scripts/robowits/eval/eval.sh`.
 - Success: native `is_success`; truncations and unsuccessful policies receive zero.
+- Progress: native per-step reward, sum and maximum saved only in operator files.
+  `formal-progress.json` separately reports `avg_sum_reward` / `avg_max_reward`;
+  missing historical rewards remain unavailable. No reward is added to agent tools.
 - Default batch: README RoboWits-10 tasks (01, 02, 03, 04, 06, 09, 13, 16, 17, 25),
   eight exploration episodes per task, five formal
   layouts (indices 0–4), one simulator at a time. This is a five-layout evaluation,
@@ -51,14 +59,15 @@ RAX's hidden-path policy excludes them. First use compiles Genesis kernels.
 ```bash
 source scripts/host_env.sh
 python scripts/evaluate_robowits.py \
-  --output runtime/robowits-seed-eval \
+  --output runtime/robowits-canonical-eval \
   --provider-home /home/junwenmiao/code/rax-local/provider \
   --profile chatgpt --gpu 1 --episodes 8 --formal-episodes 5
 ```
 
 Use `--tasks robowits_06` for one task, or list mutation IDs explicitly.
 Use `--suite all-seed` in a new output directory to select all 30 seed tasks.
-Existing output directories preserve the task list in their manifest. Reusing the
+Existing output directories preserve the task list and exploration collection.
+Resuming or adopting trials with a different exploration collection is rejected. Reusing the
 output directory starts only pending tasks, preserving prior trial records; it
 does not silently retry failed or interrupted trials. A `running` record after
 interruption requires inspecting that trial before deciding whether to retry it.
@@ -77,7 +86,7 @@ copied into batch outputs.
 `services/robowits/` implements the process, RGB-D geometry, tool contract, native
 scoring, and catalog. Generic robot/camera skill documents live under
 `agent_skills/{control,perception}/`. `local_tests/unit/test_robowits_backend.py`
-checks protocol separation, action rejection, geometry, host import isolation,
+checks protocol separation, native reward privacy, bounded texture loading, action rejection, geometry, host import isolation,
 and task prompts. The doctor exercises real Genesis resets, all three cameras,
 calibrated pixel round trips, and five native control steps; it is an interface
 check, not a successful task evaluation.
@@ -102,3 +111,26 @@ The batch was narrowed at the user’s request to the README RoboWits-10 subset,
 preserving completed trials and the active task. It is tracked under `runtime/robowits-seed-eval/`. Consult its
 current manifest and refreshed summary for completion; the initial result above
 must not be interpreted as the aggregate benchmark score.
+
+## Preserving RAX's method
+
+The controller lifecycle (`services/controller/`), method skills
+(`agent_skills/method/`), and agent workspace runtime (`auto_research_agent/`)
+are unchanged from the upstream native branch at `1767412`. RAX supplies the
+exploration, coding, frozen rehearsal and evaluation process. This adapter
+supplies only the robot API, sensors, reset protocol and private scoring. No
+task-specific policy, action sequence, simulator object poses or formal feedback
+is injected into a new agent workspace.
+
+The 04 eraser texture is loaded at its original resolution. During native
+environment construction only, Pillow's warning threshold is temporarily set
+to 140 million pixels (fatal threshold 280 million) to admit its packaged
+277,805,556-pixel image. The previous threshold is restored in `finally`,
+including construction failures. No image, mesh, mass, friction or task predicate
+is changed. This compatibility adjustment does not disable Pillow's protection.
+
+Real simulator checks passed for canonical 06 and 04. In canonical 06, the red
+block is at x≈0.915m and white block 4 at x≈0.5m, preserving the original task
+constraint that the red block is far from the robot. These are operator checks,
+not facts supplied to the solving agent. Success on those checks verifies the
+interface; the new RAX trial must still demonstrate its own performance.

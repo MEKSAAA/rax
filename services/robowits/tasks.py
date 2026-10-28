@@ -10,9 +10,10 @@ IMAGE_WIDTH, IMAGE_HEIGHT = 848, 480
 CONTROL_HZ = 1 / 0.0333
 ACTION_DIM = STATE_DIM = 14
 FRAME_STRIDE = 5
-EXPLORATION_COLLECTIONS = {0: ('random', 10000)}
+EXPLORATION_COLLECTIONS = {0: ('legacy_random', 10000), 2: ('canonical', 10000)}
 COLLECTION_SUFFIX = {1: 'official'}
-COLLECTION_NAMES = {0: 'random exploration', 1: 'official evaluation JSON'}
+COLLECTION_NAMES = {0: 'legacy random exploration (unvalidated task constraints)',
+                    1: 'official evaluation JSON', 2: 'canonical source scene exploration'}
 
 
 def source_root():
@@ -54,10 +55,10 @@ def layout(task, collection, layout_id):
     i = task_info(task)
     if type(layout_id) is not int or layout_id < 0:
         raise ValueError('layout id must be a nonnegative integer')
-    if collection == 0:
+    if collection in EXPLORATION_COLLECTIONS:
         if layout_id >= 1000:
             raise ValueError('exploration layout out of range')
-        return {'kind': 'random_reset', 'seed': 10000 + layout_id}
+        return {'kind': 'canonical_reset' if collection == 2 else 'random_reset', 'seed': 10000 + layout_id}
     if collection == 1 and layout_id < i['formal_layouts']:
         return {'kind': 'official_json', 'seed': 42, 'init_index': layout_id}
     raise ValueError('Invalid collection or official layout index')

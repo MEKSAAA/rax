@@ -18,8 +18,8 @@ def parse_args(argv=None):
     parser.add_argument("--task", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--port", type=int, default=0)
-    parser.add_argument("--collection", type=int, choices=(0, 1), required=True,
-                        help="0: random exploration; 1: released evaluation scene JSON")
+    parser.add_argument("--collection", type=int, choices=(0, 1, 2), required=True,
+                        help="0: legacy random exploration; 1: released evaluation JSON; 2: canonical source scene")
     parser.add_argument("--episode-timeout-seconds", type=int, default=0)
     parser.add_argument("--depth", dest="depth", action="store_true", default=True)
     parser.add_argument("--no-depth", dest="depth", action="store_false")

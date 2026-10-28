@@ -42,13 +42,14 @@ class RoboWitsSession:
         self.task, self.collection = task, int(collection)
         self.info = T.task_info(task)
         self.suite_directory = 'mutation' if self.info['mutation'] else 'seed'
-        self.episode_mode = 'exploration' if collection == 0 else 'formal'
+        self.episode_mode = 'formal' if collection == 1 else 'exploration'
         self.include_depth = include_depth
         self.cameras = list(T.CAMERAS)
         self.step_limit = T.native_step_limit(task)
         self.env = self.raw = self.instruction = self.episode_id = self.episode_dir = None
         self.layout_id = self.layout = None
         self.step_id = 0
+        self.native_rewards = []
         self.terminated = self.truncated = self.success = False
         self.invalid_reason = self.finish_reason = self.obs = self.video = None
         self.metadata = {'task':task, 'benchmark':'robowits','cameras':self.cameras,
@@ -63,8 +64,15 @@ class RoboWitsSession:
         # Keep each task's native CPU/CUDA backend choice, especially for particle tasks.
         if self.collection == 1:
             kwargs['eval_dataset_json'] = str(T.eval_path(self.task))
-        self.env = gs_gym.get_task_class(self.info['registered_name'])(**kwargs)
+        from .assets import benchmark_texture_loading
+        with benchmark_texture_loading():
+            self.env = gs_gym.get_task_class(self.info['registered_name'])(**kwargs)
         self.env.seed(self.layout['seed'])
+        if self.collection == 2:
+            # Same canonical-scene reset mechanism as the source's sample_scenes.py.
+            # Keep original object geometry, poses, supports and material physics.
+            # No task-specific action or held-out layout is supplied to the agent.
+            self.env._place_objects = self.env._restore_eval_particles
         if self.collection == 1:
             self.env.set_eval_dataset_idx(self.layout['init_index'])
         self.instruction = self.env.task_description
@@ -166,8 +174,9 @@ class RoboWitsSession:
         validate_actions(matrix.tolist())
         frames, steps = [], []
         for values in matrix:
-            self.raw, _, done, truncated, info = self.env.step(np.asarray(values, dtype=np.float32))
+            self.raw, native_reward, done, truncated, info = self.env.step(np.asarray(values, dtype=np.float32))
             self.step_id += 1
+            self.native_rewards.append(float(native_reward))
             self.success = bool(info.get("is_success", done))
             self.terminated = self.success
             self.truncated = not self.success and (bool(truncated) or self.step_id >= self.step_limit)
@@ -235,12 +244,18 @@ class RoboWitsSession:
             # Binary scoring: once closed, the outcome is decided unless the episode was invalidated
             # (e.g. a wall timeout); a controller that returned early scores what it reached.
             "native_score": None if self.invalid_reason else (1.0 if self.success else 0.0),
+            # Operator-only metrics: retain native dense reward without exposing it to MCP.
+            "native_sum_reward": sum(self.native_rewards),
+            "native_max_reward": max(self.native_rewards) if self.native_rewards else None,
+            "native_reward_steps": len(self.native_rewards),
             "valid_for_score": not self.invalid_reason, "score_source": "robowits_success",
             "invalid_reason": self.invalid_reason, "status": "native_completed" if eligible else "incomplete",
             "reason": reason,
             "end_reason": "task_complete" if self.success else ("step_limit" if self.truncated else None),
             "native_control_steps": self.step_id, "native_reference_step_limit": self.step_limit,
             "step_limit_enforced": True, "episode_step_limit": self.step_limit})
+        write_json(self.output / 'native_rewards.json', {'episode_id': self.episode_id,
+            'rewards': self.native_rewards, 'aggregation': 'per-step native env.step reward; sum and max'})
         write_json(self.output / "summary.json", {
             "episode_id": self.episode_id, "step_id": self.step_id, "success": self.success,
             "terminated": self.terminated, "truncated": self.truncated, "complete": complete, "reason": reason,

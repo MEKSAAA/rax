@@ -11,7 +11,7 @@ from services.robowits.tools import pixel_to_world, world_to_pixel
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--task',default='robowits_06');p.add_argument('--gpu',default='1')
-    p.add_argument('--collection',type=int,default=0);p.add_argument('--layout',type=int,default=0)
+    p.add_argument('--collection',type=int,default=2);p.add_argument('--layout',type=int,default=0)
     a=p.parse_args()
     import time
     root=runtime_root()/'diagnostics'/f'robowits-{time.time_ns()}'

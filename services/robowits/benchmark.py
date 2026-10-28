@@ -17,8 +17,8 @@ def task_timeouts(task): return T.task_timeouts(task)
 
 def validate_config(config):
     T.task_info(config.task)
-    if config.eval_seed != 0 or config.formal_collection != 1:
-        raise ValueError('RoboWits explores random resets (0) and evaluates official JSON layouts (1)')
+    if config.eval_seed not in T.EXPLORATION_COLLECTIONS or config.formal_collection != 1:
+        raise ValueError('RoboWits exploration must use canonical scenes (2) or legacy random resets (0); formal uses JSON layouts (1)')
     if config.demonstration_context != 'none':
         raise ValueError('RoboWits integration uses no demonstrations')
 
@@ -36,6 +36,12 @@ def validate_layouts(config):
 def exploration_seeds(task, collection, start, episodes, **_): return tuple(range(start,start+episodes))
 
 def task_context(config, demonstration, *, live_formal):
+    scene_protocol = (
+        'Exploration repeats the original scene defined by the environment source. Initial placements do not vary. '
+        'Evaluation uses separate released scene layouts; perceive each layout again.'
+        if config.eval_seed == 2 else
+        'Legacy exploration uses random resets whose task constraints have not been validated against official layouts.'
+    )
     return f'''# Task: {config.task}
 
 **Instruction:** {T.instruction(config.task)}
@@ -43,8 +49,8 @@ def task_context(config, demonstration, *, live_formal):
 Use the current camera observations to solve this task. Two 7-DoF arms share a table.
 The native benchmark's binary success checker is authoritative. There is no partial credit.
 Each episode has a limit of {T.native_step_limit(config.task)} control steps at approximately 30 Hz.
-Exploration uses randomly sampled placements, and evaluation uses disjoint released scene layouts.
-Object placement varies; perceive the scene again each episode. No demonstration is provided.
+{scene_protocol}
+No demonstration is provided.
 Only robot state and calibrated RGB-D sensors are exposed, never object ground-truth poses.
 Read the robot-interface skill for the absolute EE action order and coordinate convention.
 '''

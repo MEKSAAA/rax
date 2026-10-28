@@ -96,7 +96,7 @@ class RoboWitsProcess:
             raise RuntimeError("A RoboWits episode is already active; finish it before starting another")
         task_info(task)
         if collection not in EXPLORATION_COLLECTIONS and collection not in COLLECTION_SUFFIX:
-            raise ValueError("collection must be 0 (exploration) or 1 (official evaluation)")
+            raise ValueError("collection must be 0 (legacy exploration), 2 (canonical exploration), or 1 (formal)")
         if not RUN_ID.fullmatch(run_id):
             raise ValueError("run_id must contain only letters, numbers, dots, underscores and hyphens")
         self.output_root.mkdir(parents=True, exist_ok=True)
