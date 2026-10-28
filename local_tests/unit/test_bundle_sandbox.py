@@ -62,7 +62,9 @@ from pathlib import Path
 def main(ctx):
     assert Path.cwd().name == "agent-workspace" and Path("code/controller/controller.py").is_file()
     assert not Path("/var/run/docker.sock").exists() and not Path("/run/docker.sock").exists()
-    assert not Path("/home").exists() and not any(Path(path).exists() for path in CHECKOUTS)
+    # A host Python prefix under /home requires empty ancestor directories there.
+    # The actual upstream checkouts must remain absent.
+    assert not any(Path(path).exists() for path in CHECKOUTS)
     assert not Path("/dev/nvidia0").exists() and not Path("/dev/nvidiactl").exists()  # No GPU.
     assert not os.environ.get("OPENROUTER_API_KEY") and set(os.environ) >= {"HOME", "PYTHONPATH", "OMP_NUM_THREADS"}
     assert not [p for p in Path("/proc").iterdir() if p.name.isdigit() and int(p.name) > 20]  # Own PID namespace.

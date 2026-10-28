@@ -181,7 +181,11 @@ def test_deploy_copies_skills_rubric_and_confines_the_agent(tmp_path, monkeypatc
     assert filesystem[str(workspace)] == 'write' and filesystem[str(workspace/'.codex')] == 'read'
     assert filesystem[str(published)] == 'write' and filesystem[str(published/'runs')] == 'read'
     assert any(filesystem.get(str(path.resolve())) == 'deny' for path in agent_host.repositories())
+    helpers = deployed['codex_home'].resolve()/'tmp/arg0-linux'
+    assert filesystem[str(helpers)] == 'read'
     assert filesystem[str(config.root.resolve().parent)] == 'deny'
+    for private in (key, deployed['login'], config.root/'state.json'):
+        assert any(private.resolve().is_relative_to(Path(path)) for path, mode in filesystem.items() if mode == 'deny')
     assert settings['model_reasoning_effort'] == config.agent_effort == 'xhigh'
     # Otherwise Codex's own defaults (compaction included).
     assert not {'model_auto_compact_token_limit', 'model_auto_compact_token_limit_scope'} & set(settings)

@@ -272,8 +272,13 @@ def permissions(config, deployed, socket):
     internet: the managed proxy allows no domain, while local Unix sockets stay reachable."""
     workspace = Path(deployed['workspace']).resolve()
     exposed = readable(config, deployed)
+    # Codex 0.164 creates its sandbox executable links here. Keep only this
+    # runtime directory readable; the rest of its home contains private state.
+    sandbox_helpers = Path(deployed.get('codex_home', config.root/'codex-home')).resolve()/'tmp'/'arg0-linux'
+    sandbox_helpers.mkdir(parents=True, exist_ok=True)
     filesystem = {str(path): 'deny' for path in agent_host.hidden_paths(config.root, carved=True,
                                                                         kept=exposed['references'])}
+    filesystem[str(sandbox_helpers)] = 'read'
     for path in (workspace, Path(socket).parent, *exposed['write']):
         filesystem[str(Path(path).resolve())] = 'write'
     # Project configuration there would configure Codex itself, the sandbox included.
