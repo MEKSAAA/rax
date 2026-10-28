@@ -1,0 +1,73 @@
+{
+  "task": "robowits_06",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "exploration_episodes": 8,
+  "frozen_rehearsals": {
+    "successes": 5,
+    "episodes": 5
+  },
+  "formal_layout_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "formal_scores": {
+    "average_score": 0.0,
+    "average_score_percent": 0.0,
+    "episode_count": 5,
+    "episodes": [
+      {
+        "episode_id": "robowits_06_formal_0_5c38fd87",
+        "episode_index": 1,
+        "native_complete": true,
+        "score": 0.0,
+        "source": "native_outcome",
+        "step_id": 1000
+      },
+      {
+        "episode_id": "robowits_06_formal_1_3da569dc",
+        "episode_index": 2,
+        "native_complete": true,
+        "score": 0.0,
+        "source": "native_outcome",
+        "step_id": 1000
+      },
+      {
+        "episode_id": "robowits_06_formal_2_8e9a11fd",
+        "episode_index": 3,
+        "native_complete": true,
+        "score": 0.0,
+        "source": "native_outcome",
+        "step_id": 1000
+      },
+      {
+        "episode_id": "robowits_06_formal_3_cb9eaab2",
+        "episode_index": 4,
+        "native_complete": true,
+        "score": 0.0,
+        "source": "native_outcome",
+        "step_id": 1000
+      },
+      {
+        "episode_id": "robowits_06_formal_4_926fd305",
+        "episode_index": 5,
+        "native_complete": true,
+        "score": 0.0,
+        "source": "native_outcome",
+        "step_id": 1000
+      }
+    ],
+    "missing_score_count": 0,
+    "missing_score_policy": "zero_in_fixed_denominator",
+    "recorded_average_score_percent": 0.0,
+    "recorded_score_count": 5,
+    "schema": "native_formal_scores_v1",
+    "score_complete": true
+  },
+  "trial": "/home/junwenmiao/code/rax-local/runtime/auto-research/20261028T002017Z_3edf15b957",
+  "bundle_sha256": "eabd9349e045439786235cbb47d4f3a289930cee3f699f7415d1e0451c1f6603",
+  "scope": "One task, five layouts. Not a complete RoboWits benchmark result."
+}

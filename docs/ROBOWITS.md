@@ -74,3 +74,21 @@ checks protocol separation, action rejection, geometry, host import isolation,
 and task prompts. The doctor exercises real Genesis resets, all three cameras,
 calibrated pixel round trips, and five native control steps; it is an interface
 check, not a successful task evaluation.
+
+## Initial local evaluation (2026-10-27)
+
+The first completed task was `robowits_06` (push the red block onto the green
+area), using `gpt-6-astra`, xhigh effort, RGB-D and eight exploration episodes.
+The frozen controller passed 5/5 exploration rehearsals, but scored **0/5 on
+formal layouts 0–4**. All five formal episodes reached the native 1000-step limit;
+there were no missing scores. Thus the integration ran end to end, while this
+policy failed to generalize. This is one task, not a full benchmark result.
+
+The [machine-readable result](robowits_initial_result.json) records the trial,
+bundle hash and every formal outcome. In the first formal layout, logs show
+repeated 2–3 cm approach tracking errors followed by retries until timeout.
+The formal outcomes were not used to revise the submitted policy.
+
+The 30-seed-task batch is tracked under `runtime/robowits-seed-eval/`. Consult its
+current manifest and refreshed summary for completion; the initial result above
+must not be interpreted as the aggregate benchmark score.
