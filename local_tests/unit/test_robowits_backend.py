@@ -93,3 +93,29 @@ def test_native_constructor_preserves_task_specific_options(tmp_path,monkeypatch
     assert calls['explicit_seed']==(10003 if collection==0 else 42)
     assert ('eval_dataset_json' in calls)==bool(collection)
     if collection: assert calls['dataset_index']==3
+
+
+def test_zero_exit_without_formal_scores_is_not_finished(tmp_path):
+    from scripts.evaluate_robowits import trial_status
+    config=tmp_path/'operator-input.json'
+    assert trial_status(config,5,0)=='incomplete_trial'
+    sim=tmp_path/'native/results/failed';sim.mkdir(parents=True)
+    (sim/'sim.log').write_text('PIL.Image.DecompressionBombError')
+    assert trial_status(config,5,0)=='infrastructure_error'
+    (tmp_path/'formal-scores.json').write_text(json.dumps({'score_complete':True,'episodes':[{'native_complete':True,'source':'native_outcome','score':0}]*5}))
+    assert trial_status(config,5,0)=='finished'
+    assert trial_status(config,6,0)!='finished'
+
+
+def test_preflight_calls_only_simulator_diagnostic(tmp_path,monkeypatch):
+    from scripts import evaluate_robowits as batch
+    from types import SimpleNamespace
+    calls=[]
+    def fail(command,**kwargs):
+        calls.append(command)
+        return SimpleNamespace(returncode=1)
+    monkeypatch.setattr(batch.subprocess,'run',fail)
+    assert not batch.run_preflight(tmp_path,'robowits_04','1')
+    assert len(calls)==1
+    assert calls[0][1]=='scripts/robowits_doctor.py'
+    assert 'start_auto_research_agent.sh' not in ' '.join(calls[0])

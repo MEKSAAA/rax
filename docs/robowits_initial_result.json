@@ -69,5 +69,6 @@
   },
   "trial": "/home/junwenmiao/code/rax-local/runtime/auto-research/20261028T002017Z_3edf15b957",
   "bundle_sha256": "eabd9349e045439786235cbb47d4f3a289930cee3f699f7415d1e0451c1f6603",
-  "scope": "One task, five layouts. Not a complete RoboWits benchmark result."
+  "scope": "One task, five layouts. Not a complete RoboWits benchmark result.",
+  "audit_note": "Exploration random resets placed the red block in direct reach, unlike official domino layouts. Not a validated matched-task protocol; see ROBOWITS_AUDIT.md."
 }

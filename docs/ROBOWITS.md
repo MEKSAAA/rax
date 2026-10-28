@@ -1,5 +1,9 @@
 # RAX on RoboWits (Genesis 1.3.1)
 
+**Implementation audit:** [confirmed protocol and infrastructure issues](ROBOWITS_AUDIT.md).
+The initial random-reset protocol is not yet validated as equivalent to the official tasks.
+The active batch is draining its current task and will pause for repair.
+
 The `robowits` backend runs RAX's native exploration → policy development → frozen
 rehearsal → submission → held-out evaluation workflow. The policy receives RGB-D
 and measured end-effector state and writes its own perception/control program.
@@ -85,7 +89,9 @@ area), using `gpt-6-astra`, xhigh effort, RGB-D and eight exploration episodes.
 The frozen controller passed 5/5 exploration rehearsals, but scored **0/5 on
 formal layouts 0–4**. All five formal episodes reached the native 1000-step limit;
 there were no missing scores. Thus the integration ran end to end, while this
-policy failed to generalize. This is one task, not a full benchmark result.
+policy failed to generalize. The subsequent audit found that its exploration reset
+made the red block directly reachable, changing a key task constraint; see
+[the audit](ROBOWITS_AUDIT.md). This is one diagnostic task result, not a validated full benchmark result.
 
 The [machine-readable result](robowits_initial_result.json) records the trial,
 bundle hash and every formal outcome. In the first formal layout, logs show
