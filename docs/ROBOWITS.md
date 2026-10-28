@@ -35,7 +35,8 @@ RAX's hidden-path policy excludes them. First use compiles Genesis kernels.
 - Native EE_ABS controller, 14-dimensional bimanual actions, ~30 Hz; 1000 control
   steps, matching RoboWits `scripts/robowits/eval/eval.sh`.
 - Success: native `is_success`; truncations and unsuccessful policies receive zero.
-- Default batch: all seed tasks, eight exploration episodes per task, five formal
+- Default batch: README RoboWits-10 tasks (01, 02, 03, 04, 06, 09, 13, 16, 17, 25),
+  eight exploration episodes per task, five formal
   layouts (indices 0–4), one simulator at a time. This is a five-layout evaluation,
   not the full 50-layout benchmark. Pass `--formal-episodes 50` for all layouts.
 - Exploratory model calls and generated code use the selected RAX provider profile.
@@ -51,7 +52,9 @@ python scripts/evaluate_robowits.py \
   --profile chatgpt --gpu 1 --episodes 8 --formal-episodes 5
 ```
 
-Use `--tasks robowits_06` for one task, or list mutation IDs explicitly. Reusing the
+Use `--tasks robowits_06` for one task, or list mutation IDs explicitly.
+Use `--suite all-seed` in a new output directory to select all 30 seed tasks.
+Existing output directories preserve the task list in their manifest. Reusing the
 output directory starts only pending tasks, preserving prior trial records; it
 does not silently retry failed or interrupted trials. A `running` record after
 interruption requires inspecting that trial before deciding whether to retry it.
@@ -89,6 +92,7 @@ bundle hash and every formal outcome. In the first formal layout, logs show
 repeated 2–3 cm approach tracking errors followed by retries until timeout.
 The formal outcomes were not used to revise the submitted policy.
 
-The 30-seed-task batch is tracked under `runtime/robowits-seed-eval/`. Consult its
+The batch was narrowed at the user’s request to the README RoboWits-10 subset,
+preserving completed trials and the active task. It is tracked under `runtime/robowits-seed-eval/`. Consult its
 current manifest and refreshed summary for completion; the initial result above
 must not be interpreted as the aggregate benchmark score.

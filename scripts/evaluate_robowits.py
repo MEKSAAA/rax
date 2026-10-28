@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from services.robowits import tasks as T
 
+ROBOWITS_10 = tuple('robowits_' + n for n in '01 02 03 04 06 09 13 16 17 25'.split())
+
 
 def write(path, data):
     temp = path.with_suffix('.tmp')
@@ -47,7 +49,8 @@ def main():
     p.add_argument('--output', type=Path, required=True, help='Persistent batch directory; reused to resume')
     p.add_argument('--provider-home', type=Path, required=True)
     p.add_argument('--profile', default='chatgpt')
-    p.add_argument('--tasks', nargs='+', help='Default: all 30 seed tasks')
+    p.add_argument('--tasks', nargs='+', help='Explicit task IDs; overrides --suite for new batches')
+    p.add_argument('--suite', choices=['robowits-10','all-seed'], default='robowits-10')
     p.add_argument('--gpu', default='1')
     p.add_argument('--episodes', type=int, default=8)
     p.add_argument('--formal-episodes', type=int, default=5)
@@ -62,15 +65,17 @@ def main():
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             p.error('Another batch runner owns this output directory')
-    selected = a.tasks or [t for t in T.task_names() if not T.task_info(t)['mutation']]
+    selected = a.tasks or (list(ROBOWITS_10) if a.suite == 'robowits-10' else [t for t in T.task_names() if not T.task_info(t)['mutation']])
     manifest_path = root / 'manifest.json'
     if manifest_path.exists():
         manifest = json.loads(manifest_path.read_text())
+        if a.tasks and set(a.tasks) != set(manifest['tasks']):
+            p.error('Existing manifest has a different task list; use a new output directory or explicitly migrate the queue')
         if not a.report_only and (manifest['episodes'] != a.episodes or manifest['formal_episodes'] != a.formal_episodes):
             p.error('Resume must preserve the original episode budgets')
     else:
         profile = tomllib.loads((a.provider_home / (a.profile + '.config.toml')).read_text())
-        manifest = dict(benchmark='robowits', model=profile.get('rax', {}).get('model'), provider_profile=a.profile,
+        manifest = dict(benchmark='robowits', suite='custom' if a.tasks else a.suite, model=profile.get('rax', {}).get('model'), provider_profile=a.profile,
             episodes=a.episodes, formal_episodes=a.formal_episodes,
             created=time.time(), source_commit=subprocess.check_output(['git','-C',str(T.source_root()),'rev-parse','HEAD'],text=True).strip(),
             tasks={t:dict(status='pending', dataset_sha256=hashlib.sha256(T.eval_path(t).read_bytes()).hexdigest()) for t in selected})
