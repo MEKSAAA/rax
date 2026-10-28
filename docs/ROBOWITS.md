@@ -155,3 +155,10 @@ batch is `runtime/robowits10-canonical-eval/`; it adopts only the corrected 06
 result and reruns the other nine tasks in fresh workspaces. The old random-reset
 batch remains paused and is excluded from the new summary. Budgets remain eight
 exploration episodes and five formal layouts per task.
+
+The user subsequently limited this corrected batch to **01, 02 and 06 only**.
+The manifest under `runtime/robowits10-canonical-eval/` now contains those three
+IDs (the directory name is retained to preserve active artifact paths). Corrected
+06 is retained, active 01 drains normally, and only 02 remains queued. The final
+planned denominator is 15 formal episodes, not 50; the other seven tasks will
+not be started by this batch.
