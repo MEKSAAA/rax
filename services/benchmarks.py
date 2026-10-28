@@ -155,6 +155,32 @@ BENCHMARKS = {
         },
     ),
 }
+BENCHMARKS['robowits'] = Benchmark(
+    name='robowits', label='RoboWits', adapter='services.robowits.benchmark',
+    robot_tools=frozenset({'robowits_status','robowits_observe','robowits_step','robowits_pixel_to_position'}),
+    geometry_tools=frozenset({'robowits_pixel_to_position'}), unscoped_tools=frozenset(),
+    mutating=frozenset({'robowits_step'}), previewable=frozenset(),
+    status_tool='robowits_status', observe_tool='robowits_observe',
+    tool_prefixes=('robowits_',), episode_tool_prefixes=('robowits_',),
+    simulator_modules=('services.robowits.server',), startup_seconds=900,
+    robot={'benchmark':'RoboWits','status':'robowits_status','observe':'robowits_observe',
+        'step':'robowits_step','plan':'','pixel':'robowits_pixel_to_position','hz':30,
+        'overview_camera':'ego','overview':'egocentric',
+        'cameras':('ego','wrist_right','wrist_left'),'arms':'bimanual',
+        'wrist_images':'`wrist_right` and `wrist_left`','tracking_skill':'robot-interface'},
+    graded_score=False, method_skills=True,
+    planner_files=('services/robowits/session.py','services/robowits/tools.py','services/simulator/protocol.py'),
+    vocabulary=r'robowits_|\brobowits\b|\bmarvin\b', task_nouns='',
+    task_tag='RoboWits', score_label='Formal native success rate (released layouts)',
+    layout_note='Explore new random layouts; evaluate released JSON layouts only after freezing the controller.',
+    setup_defaults={'formal_episodes':5,'formal_workers':1,'formal_eval_seed':1,
+        'exploration_start_seed':0,'demonstration_context':'none','expert_demonstrations':0},
+    cli_defaults={'exploration_start_seed':0,'exploration_collection':0,'formal_episodes':5,'formal_workers':1},
+    fixed={'task_rules':('public','Official task instruction only.'),
+        'episode_reviews':('off','No ground-truth feedback beyond binary completion.'),
+        'expert_demonstrations':(0,'No demonstrations.'),'expert_content':('full','No expert episodes.'),
+        'demonstration_context':('none','No demonstrations.'),'write_handoff':('off','Frozen program evaluation.')})
+
 ALL_ROBOT_TOOLS = frozenset().union(*(b.robot_tools for b in BENCHMARKS.values()))
 ALL_MUTATING = frozenset().union(*(b.mutating for b in BENCHMARKS.values()))
 ALL_UNSCOPED_TOOLS = frozenset().union(*(b.unscoped_tools for b in BENCHMARKS.values()))

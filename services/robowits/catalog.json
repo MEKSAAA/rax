@@ -1,0 +1,1402 @@
+{
+  "robowits_01": {
+    "registered_name": "robowits/01-align-blocks-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_01_01": {
+    "registered_name": "robowits/01_01-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_01_02": {
+    "registered_name": "robowits/01_02-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_01_03": {
+    "registered_name": "robowits/01_03-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_01_04": {
+    "registered_name": "robowits/01_04-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_01_05": {
+    "registered_name": "robowits/01_05-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_01_06": {
+    "registered_name": "robowits/01_06-v0",
+    "instruction": "Align the three cubes perfectly in a straight line.",
+    "variant": "01_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02": {
+    "registered_name": "robowits/02-retrieve-cube-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_02_01": {
+    "registered_name": "robowits/02_01-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_02": {
+    "registered_name": "robowits/02_02-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_05": {
+    "registered_name": "robowits/02_05-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_06": {
+    "registered_name": "robowits/02_06-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_07": {
+    "registered_name": "robowits/02_07-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_08": {
+    "registered_name": "robowits/02_08-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_08",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_02_10": {
+    "registered_name": "robowits/02_10-v0",
+    "instruction": "Retrieve the cube from the container and place it on the green target area.",
+    "variant": "02_10",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_03": {
+    "registered_name": "robowits/03-gap-retrieve-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_03_01": {
+    "registered_name": "robowits/03_01-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_03_02": {
+    "registered_name": "robowits/03_02-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_03_03": {
+    "registered_name": "robowits/03_03-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_03_04": {
+    "registered_name": "robowits/03_04-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_03_05": {
+    "registered_name": "robowits/03_05-v0",
+    "instruction": "Place the lemon on the green target area.",
+    "variant": "03_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_04": {
+    "registered_name": "robowits/04-pinch-card-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_04_01": {
+    "registered_name": "robowits/04_01-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_04_02": {
+    "registered_name": "robowits/04_02-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_04_03": {
+    "registered_name": "robowits/04_03-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_04_04": {
+    "registered_name": "robowits/04_04-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_04_05": {
+    "registered_name": "robowits/04_05-v0",
+    "instruction": "Pick the bank card up and place it on the green target area.",
+    "variant": "04_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05": {
+    "registered_name": "robowits/05-roll-up-ball-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_05_01": {
+    "registered_name": "robowits/05_01-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_02": {
+    "registered_name": "robowits/05_02-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_03": {
+    "registered_name": "robowits/05_03-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_04": {
+    "registered_name": "robowits/05_04-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_05": {
+    "registered_name": "robowits/05_05-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_06": {
+    "registered_name": "robowits/05_06-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_07": {
+    "registered_name": "robowits/05_07-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_05_08": {
+    "registered_name": "robowits/05_08-v0",
+    "instruction": "Move the box into the basket.",
+    "variant": "05_08",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06": {
+    "registered_name": "robowits/06-dominos-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_06_01": {
+    "registered_name": "robowits/06_01-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06_02": {
+    "registered_name": "robowits/06_02-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06_03": {
+    "registered_name": "robowits/06_03-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06_04": {
+    "registered_name": "robowits/06_04-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06_05": {
+    "registered_name": "robowits/06_05-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_06_06": {
+    "registered_name": "robowits/06_06-v0",
+    "instruction": "Push the red block onto the green target area.",
+    "variant": "06_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_07": {
+    "registered_name": "robowits/07-stand-pages-v0",
+    "instruction": "Stand up the two pages stably.",
+    "variant": "07",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_07_01": {
+    "registered_name": "robowits/07_01-v0",
+    "instruction": "Stand up the two pages stably.",
+    "variant": "07_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_07_02": {
+    "registered_name": "robowits/07_02-v0",
+    "instruction": "Stand up the two pages stably.",
+    "variant": "07_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08": {
+    "registered_name": "robowits/08-round-dough-sheet-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_08_01": {
+    "registered_name": "robowits/08_01-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08_02": {
+    "registered_name": "robowits/08_02-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08_03": {
+    "registered_name": "robowits/08_03-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08_04": {
+    "registered_name": "robowits/08_04-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08_05": {
+    "registered_name": "robowits/08_05-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_08_06": {
+    "registered_name": "robowits/08_06-v0",
+    "instruction": "Flatten the dough ball and make a perfect round sheet.",
+    "variant": "08_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_09": {
+    "registered_name": "robowits/09-hold-cup-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_09_01": {
+    "registered_name": "robowits/09_01-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_09_02": {
+    "registered_name": "robowits/09_02-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_09_03": {
+    "registered_name": "robowits/09_03-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_09_04": {
+    "registered_name": "robowits/09_04-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_09_05": {
+    "registered_name": "robowits/09_05-v0",
+    "instruction": "Put the cup on the green target area on the slope without sliding down.",
+    "variant": "09_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_10": {
+    "registered_name": "robowits/10-collect-screws-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_10_01": {
+    "registered_name": "robowits/10_01-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_10_02": {
+    "registered_name": "robowits/10_02-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_10_03": {
+    "registered_name": "robowits/10_03-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_10_04": {
+    "registered_name": "robowits/10_04-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_10_05": {
+    "registered_name": "robowits/10_05-v0",
+    "instruction": "Collect the screw into the container.",
+    "variant": "10_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_11": {
+    "registered_name": "robowits/11-place-tall-box-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_11_01": {
+    "registered_name": "robowits/11_01-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_11_02": {
+    "registered_name": "robowits/11_02-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_11_03": {
+    "registered_name": "robowits/11_03-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_11_04": {
+    "registered_name": "robowits/11_04-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_11_05": {
+    "registered_name": "robowits/11_05-v0",
+    "instruction": "Move the rectangular box onto the green target area.",
+    "variant": "11_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12": {
+    "registered_name": "robowits/12-ball-into-bottle-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_12_01": {
+    "registered_name": "robowits/12_01-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12_02": {
+    "registered_name": "robowits/12_02-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12_03": {
+    "registered_name": "robowits/12_03-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12_04": {
+    "registered_name": "robowits/12_04-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12_05": {
+    "registered_name": "robowits/12_05-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_12_06": {
+    "registered_name": "robowits/12_06-v0",
+    "instruction": "Transfer the ball from the blue container into the red bottle.",
+    "variant": "12_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13": {
+    "registered_name": "robowits/13-cover-with-lid-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_13_01": {
+    "registered_name": "robowits/13_01-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13_02": {
+    "registered_name": "robowits/13_02-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13_03": {
+    "registered_name": "robowits/13_03-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13_04": {
+    "registered_name": "robowits/13_04-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13_05": {
+    "registered_name": "robowits/13_05-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_13_06": {
+    "registered_name": "robowits/13_06-v0",
+    "instruction": "Cover the pot precisely using one lid.",
+    "variant": "13_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14": {
+    "registered_name": "robowits/14-stack-cubes-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_14_01": {
+    "registered_name": "robowits/14_01-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14_02": {
+    "registered_name": "robowits/14_02-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14_03": {
+    "registered_name": "robowits/14_03-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14_04": {
+    "registered_name": "robowits/14_04-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14_05": {
+    "registered_name": "robowits/14_05-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_14_06": {
+    "registered_name": "robowits/14_06-v0",
+    "instruction": "Build a stable two-layer stack so the red cube's center is above the green colored dot.",
+    "variant": "14_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_15": {
+    "registered_name": "robowits/15-separate-marbles-and-sand-v0",
+    "instruction": "Remove sand from the jar and keep the marbles in the jar.",
+    "variant": "15",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_15_01": {
+    "registered_name": "robowits/15_01-v0",
+    "instruction": "Remove sand from the jar and keep the marbles in the jar.",
+    "variant": "15_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_15_03": {
+    "registered_name": "robowits/15_03-v0",
+    "instruction": "Remove sand from the jar and keep the marbles in the jar.",
+    "variant": "15_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_15_04": {
+    "registered_name": "robowits/15_04-v0",
+    "instruction": "Remove sand from the jar and keep the marbles in the jar.",
+    "variant": "15_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_15_05": {
+    "registered_name": "robowits/15_05-v0",
+    "instruction": "Remove sand from the jar and keep the marbles in the jar.",
+    "variant": "15_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16": {
+    "registered_name": "robowits/16-stand-bulb-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_16_01": {
+    "registered_name": "robowits/16_01-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_02": {
+    "registered_name": "robowits/16_02-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_03": {
+    "registered_name": "robowits/16_03-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_04": {
+    "registered_name": "robowits/16_04-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_05": {
+    "registered_name": "robowits/16_05-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_06": {
+    "registered_name": "robowits/16_06-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_16_07": {
+    "registered_name": "robowits/16_07-v0",
+    "instruction": "Stand the tall object with curved bottom stably within the green target area.",
+    "variant": "16_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17": {
+    "registered_name": "robowits/17-ball-onto-tower-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_17_01": {
+    "registered_name": "robowits/17_01-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_02": {
+    "registered_name": "robowits/17_02-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_03": {
+    "registered_name": "robowits/17_03-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_04": {
+    "registered_name": "robowits/17_04-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_05": {
+    "registered_name": "robowits/17_05-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_06": {
+    "registered_name": "robowits/17_06-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_07": {
+    "registered_name": "robowits/17_07-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_17_08": {
+    "registered_name": "robowits/17_08-v0",
+    "instruction": "Place the ball stably on top of the tower.",
+    "variant": "17_08",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18": {
+    "registered_name": "robowits/18-insert-cylinder-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_18_01": {
+    "registered_name": "robowits/18_01-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18_02": {
+    "registered_name": "robowits/18_02-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18_03": {
+    "registered_name": "robowits/18_03-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18_04": {
+    "registered_name": "robowits/18_04-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18_05": {
+    "registered_name": "robowits/18_05-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_18_06": {
+    "registered_name": "robowits/18_06-v0",
+    "instruction": "Insert the yellow rod into one of the round holes in the white block so it stands upright in the hole.",
+    "variant": "18_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19": {
+    "registered_name": "robowits/19-stack-bowls-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_19_01": {
+    "registered_name": "robowits/19_01-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19_02": {
+    "registered_name": "robowits/19_02-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19_03": {
+    "registered_name": "robowits/19_03-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19_05": {
+    "registered_name": "robowits/19_05-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19_06": {
+    "registered_name": "robowits/19_06-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_19_07": {
+    "registered_name": "robowits/19_07-v0",
+    "instruction": "Nest the smaller bowl concentrically inside the larger one.",
+    "variant": "19_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_20": {
+    "registered_name": "robowits/20-ball-into-jar-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_20_01": {
+    "registered_name": "robowits/20_01-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_20_02": {
+    "registered_name": "robowits/20_02-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_20_03": {
+    "registered_name": "robowits/20_03-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_20_04": {
+    "registered_name": "robowits/20_04-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_20_05": {
+    "registered_name": "robowits/20_05-v0",
+    "instruction": "Put the foam ball fully into the jar.",
+    "variant": "20_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_21": {
+    "registered_name": "robowits/21-seal-colander-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_21_01": {
+    "registered_name": "robowits/21_01-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_21_02": {
+    "registered_name": "robowits/21_02-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_21_03": {
+    "registered_name": "robowits/21_03-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_21_04": {
+    "registered_name": "robowits/21_04-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_21_05": {
+    "registered_name": "robowits/21_05-v0",
+    "instruction": "Make the container hold water for a short time.",
+    "variant": "21_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_22": {
+    "registered_name": "robowits/22-stabilize-egg-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_22_01": {
+    "registered_name": "robowits/22_01-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_22_02": {
+    "registered_name": "robowits/22_02-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_22_03": {
+    "registered_name": "robowits/22_03-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_22_04": {
+    "registered_name": "robowits/22_04-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_22_05": {
+    "registered_name": "robowits/22_05-v0",
+    "instruction": "Make the ellipsoid object stand upright in the bowl without falling.",
+    "variant": "22_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_23": {
+    "registered_name": "robowits/23-place-book-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_23_01": {
+    "registered_name": "robowits/23_01-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_23_02": {
+    "registered_name": "robowits/23_02-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_23_03": {
+    "registered_name": "robowits/23_03-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_23_04": {
+    "registered_name": "robowits/23_04-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_23_05": {
+    "registered_name": "robowits/23_05-v0",
+    "instruction": "Shelve the book upright without knocking over the other books.",
+    "variant": "23_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_24": {
+    "registered_name": "robowits/24-raise-platform-v0",
+    "instruction": "Create an elevated platform and place the book on it.",
+    "variant": "24",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_24_01": {
+    "registered_name": "robowits/24_01-v0",
+    "instruction": "Create an elevated platform and place the book on it.",
+    "variant": "24_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_24_02": {
+    "registered_name": "robowits/24_02-v0",
+    "instruction": "Create an elevated platform and place the book on it.",
+    "variant": "24_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_24_03": {
+    "registered_name": "robowits/24_03-v0",
+    "instruction": "Create an elevated platform and place the book on it.",
+    "variant": "24_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_24_04": {
+    "registered_name": "robowits/24_04-v0",
+    "instruction": "Create an elevated platform and place the book on it.",
+    "variant": "24_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25": {
+    "registered_name": "robowits/25-water-into-mug-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_25_01": {
+    "registered_name": "robowits/25_01-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_02": {
+    "registered_name": "robowits/25_02-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_03": {
+    "registered_name": "robowits/25_03-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_04": {
+    "registered_name": "robowits/25_04-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_05": {
+    "registered_name": "robowits/25_05-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_06": {
+    "registered_name": "robowits/25_06-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_25_07": {
+    "registered_name": "robowits/25_07-v0",
+    "instruction": "Collect water in the mug without moving the pitcher.",
+    "variant": "25_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_26": {
+    "registered_name": "robowits/26-align-chopsticks-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_26_01": {
+    "registered_name": "robowits/26_01-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_26_02": {
+    "registered_name": "robowits/26_02-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_26_03": {
+    "registered_name": "robowits/26_03-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_26_04": {
+    "registered_name": "robowits/26_04-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_26_05": {
+    "registered_name": "robowits/26_05-v0",
+    "instruction": "Make all six chopsticks point in the same direction, with their small thin ends all facing the same way.",
+    "variant": "26_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27": {
+    "registered_name": "robowits/27-retrieve-roll-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_27_01": {
+    "registered_name": "robowits/27_01-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_02": {
+    "registered_name": "robowits/27_02-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_03": {
+    "registered_name": "robowits/27_03-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_04": {
+    "registered_name": "robowits/27_04-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_05": {
+    "registered_name": "robowits/27_05-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_06": {
+    "registered_name": "robowits/27_06-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_27_07": {
+    "registered_name": "robowits/27_07-v0",
+    "instruction": "Place the roll on the green target area.",
+    "variant": "27_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28": {
+    "registered_name": "robowits/28-move-cube-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_28_01": {
+    "registered_name": "robowits/28_01-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_02": {
+    "registered_name": "robowits/28_02-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_03": {
+    "registered_name": "robowits/28_03-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_04": {
+    "registered_name": "robowits/28_04-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_05": {
+    "registered_name": "robowits/28_05-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_06": {
+    "registered_name": "robowits/28_06-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_28_07": {
+    "registered_name": "robowits/28_07-v0",
+    "instruction": "Move any cube beyond the goal line.",
+    "variant": "28_07",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29": {
+    "registered_name": "robowits/29-balance-board-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_29_01": {
+    "registered_name": "robowits/29_01-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29_02": {
+    "registered_name": "robowits/29_02-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29_03": {
+    "registered_name": "robowits/29_03-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29_04": {
+    "registered_name": "robowits/29_04-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29_05": {
+    "registered_name": "robowits/29_05-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_05",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_29_06": {
+    "registered_name": "robowits/29_06-v0",
+    "instruction": "Place the board onto the wall and keep it balanced.",
+    "variant": "29_06",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_30": {
+    "registered_name": "robowits/30-differentiate-cubes-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30",
+    "mutation": false,
+    "formal_layouts": 50
+  },
+  "robowits_30_01": {
+    "registered_name": "robowits/30_01-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30_01",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_30_02": {
+    "registered_name": "robowits/30_02-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30_02",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_30_03": {
+    "registered_name": "robowits/30_03-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30_03",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_30_04": {
+    "registered_name": "robowits/30_04-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30_04",
+    "mutation": true,
+    "formal_layouts": 20
+  },
+  "robowits_30_05": {
+    "registered_name": "robowits/30_05-v0",
+    "instruction": "Place the wooden cube to the green target area. Keep the metal cube inside the mug.",
+    "variant": "30_05",
+    "mutation": true,
+    "formal_layouts": 20
+  }
+}

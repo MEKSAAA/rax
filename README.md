@@ -17,6 +17,12 @@ no access to the simulator's ground truth. Robot, Gemini and episode access go t
 one host-owned MCP service. (The container branch runs the same experiments with the
 agent in an offline Docker container instead.)
 
+## RoboWits adaptation
+
+This fork also supports RoboWits with Genesis 1.3.1 through `--benchmark robowits`.
+See [RoboWits setup and evaluation](docs/ROBOWITS.md) for the dual-arm RGB-D backend,
+30 seed / 170 mutation task catalog, and resumable batch evaluation command.
+
 ## Benchmark
 
 | Backend | Robot | Tasks | Exploration layouts | Formal layouts |
