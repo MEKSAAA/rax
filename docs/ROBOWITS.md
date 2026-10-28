@@ -134,3 +134,24 @@ block is at x≈0.915m and white block 4 at x≈0.5m, preserving the original ta
 constraint that the red block is far from the robot. These are operator checks,
 not facts supplied to the solving agent. Success on those checks verifies the
 interface; the new RAX trial must still demonstrate its own performance.
+
+## Canonical-source validation result
+
+The corrected `robowits_06` run completed: **5/5 formal successes**, at steps
+104, 102, 104, 102, and 104 on official layout indices 0–4. Each episode's native
+maximum reward was 1.0. All scores are native, finalized, and present. The agent
+independently generated `code/push_chain/` from its observations and exploration;
+the operator supplied no task-solving controller. Its final two rehearsals passed
+on the repeated canonical scene, both in 401 steps.
+
+See [the machine-readable result](robowits_canonical_result.json) for the trial,
+exact frozen bundle hash, success records and separate native reward aggregates.
+The initial legacy run scored 0/5, but this single rerun is not a statistical
+causal estimate: the exploration protocol changed and a new policy was learned.
+Five layouts of one task do not establish performance on the full benchmark.
+
+The user resumed the ten-task evaluation with the corrected protocol. Its new
+batch is `runtime/robowits10-canonical-eval/`; it adopts only the corrected 06
+result and reruns the other nine tasks in fresh workspaces. The old random-reset
+batch remains paused and is excluded from the new summary. Budgets remain eight
+exploration episodes and five formal layouts per task.

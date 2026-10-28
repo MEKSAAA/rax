@@ -1,0 +1,112 @@
+{
+  "task": "robowits_06",
+  "protocol": "canonical_source_scene_v1",
+  "exploration_collection": 2,
+  "exploration_initial_layout_varies": false,
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "exploration_episode_budget": 8,
+  "formal_layout_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "formal_scores": {
+    "average_score": 1.0,
+    "average_score_percent": 100.0,
+    "episode_count": 5,
+    "episodes": [
+      {
+        "episode_id": "robowits_06_formal_0_ac0d132b",
+        "episode_index": 1,
+        "native_complete": true,
+        "score": 1.0,
+        "source": "native_outcome",
+        "step_id": 104
+      },
+      {
+        "episode_id": "robowits_06_formal_1_0e0b543e",
+        "episode_index": 2,
+        "native_complete": true,
+        "score": 1.0,
+        "source": "native_outcome",
+        "step_id": 102
+      },
+      {
+        "episode_id": "robowits_06_formal_2_09073048",
+        "episode_index": 3,
+        "native_complete": true,
+        "score": 1.0,
+        "source": "native_outcome",
+        "step_id": 104
+      },
+      {
+        "episode_id": "robowits_06_formal_3_788d493b",
+        "episode_index": 4,
+        "native_complete": true,
+        "score": 1.0,
+        "source": "native_outcome",
+        "step_id": 102
+      },
+      {
+        "episode_id": "robowits_06_formal_4_a42ac8c3",
+        "episode_index": 5,
+        "native_complete": true,
+        "score": 1.0,
+        "source": "native_outcome",
+        "step_id": 104
+      }
+    ],
+    "missing_score_count": 0,
+    "missing_score_policy": "zero_in_fixed_denominator",
+    "recorded_average_score_percent": 100.0,
+    "recorded_score_count": 5,
+    "schema": "native_formal_scores_v1",
+    "score_complete": true
+  },
+  "formal_progress": {
+    "schema": "robowits_native_progress_v1",
+    "complete": true,
+    "episodes": [
+      {
+        "episode_id": "robowits_06_formal_0_ac0d132b",
+        "available": true,
+        "sum_reward": 83.49286115169525,
+        "max_reward": 1.0
+      },
+      {
+        "episode_id": "robowits_06_formal_1_0e0b543e",
+        "available": true,
+        "sum_reward": 81.88741600513458,
+        "max_reward": 1.0
+      },
+      {
+        "episode_id": "robowits_06_formal_2_09073048",
+        "available": true,
+        "sum_reward": 83.52091056108475,
+        "max_reward": 1.0
+      },
+      {
+        "episode_id": "robowits_06_formal_3_788d493b",
+        "available": true,
+        "sum_reward": 49.418920800089836,
+        "max_reward": 1.0
+      },
+      {
+        "episode_id": "robowits_06_formal_4_a42ac8c3",
+        "available": true,
+        "sum_reward": 83.55787312984467,
+        "max_reward": 1.0
+      }
+    ],
+    "avg_max_reward": 1.0,
+    "avg_sum_reward": 76.37559632956982,
+    "missing_policy": "unavailable, never reconstructed from images or binary success"
+  },
+  "trial": "/home/junwenmiao/code/rax-local/runtime/auto-research/20261028T033803Z_c52bfb3b0b",
+  "bundle_sha256": "fd205efbbf02f6d83820d9614095e7814c515541d7cd6f5313a9593260a0fc2e",
+  "scope": "One task, five official layouts; not the whole RoboWits-10 or 50-layout benchmark.",
+  "comparison_note": "Legacy 06 scored 0/5. This rerun changes exploration protocol and has a newly generated policy; it is not a repeated-trial statistical causal estimate."
+}
