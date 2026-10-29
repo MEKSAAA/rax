@@ -63,15 +63,56 @@ Next steps are to:
 - Introduce diverse training layouts isolated from the evaluation data, including a no-action baseline to detect scene-specific shortcuts.
 - Expand evaluation toward all 50 official seed-task layouts and analyze perception, contact, and recovery failures separately.
 
-## Evidence and Demos
+## Success and Failure Demos
 
-The archive contains **138 recorded videos**, controller code, public agent explanations, tool calls, and per-episode outputs. The linked Markdown records include direct video links; they exclude hidden internal reasoning.
+The archive contains **138 recorded videos**, controller code, public agent explanations, tool calls, and per-episode outputs. The cases below include direct video links and full process records covering exploration, code development, rehearsal, and evaluation. Public explanations are recorded outputs, not hidden internal reasoning. Video time follows the simulation and is not synchronized with the agent’s wall-clock reasoning time.
 
-- [Dominos: successful exploration-to-controller pipeline](../runtime/robowits-report/cases/robowits_06/process.md)
-- [Ball onto Tower: successful and failed evaluation episodes](../runtime/robowits-report/cases/robowits_17/process.md)
-- [Cover with Lid: software failure trace](../runtime/robowits-report/cases/robowits_13/process.md)
-- [Water into Mug: rehearsal–evaluation mismatch](../runtime/robowits-report/cases/robowits_25/process.md)
-- [Hold Cup: continuation and final evaluation](../runtime/robowits-report/cases/robowits_09_continued/process.md)
-- [Results CSV](../runtime/robowits-report/results.csv) · [Full Chinese report](ROBOWITS_EXPERIMENT_REPORT.md)
+### Success: Dominos
 
-The results table is self-contained. Demo links require the accompanying local evidence directory when sharing this Markdown file.
+The agent identified the connected block chain and implemented pushing with re-observation. All five evaluation episodes succeeded; the example below completes in 104 steps.
+
+- [Successful evaluation video](../runtime/robowits-report/cases/robowits_06/episodes/robowits_06_formal_0_ac0d132b/sensors.mp4) — 104 control steps; episode `robowits_06_formal_0_ac0d132b`.
+- [Full process record](../runtime/robowits-report/cases/robowits_06/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_06/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_06/failure-audit.json)
+
+### Success–failure comparison: Ball onto Tower
+
+The same frozen controller succeeded in three layouts and failed in two. Compare a successful alignment and release with an episode where the ball became undetectable after placement and recovery failed.
+
+- [Successful evaluation video](../runtime/robowits-report/cases/robowits_17/episodes/robowits_17_formal_0_54b5091f/sensors.mp4) — 496 control steps; episode `robowits_17_formal_0_54b5091f`.
+- [Failed evaluation video](../runtime/robowits-report/cases/robowits_17/episodes/robowits_17_formal_3_579ab8c7/sensors.mp4) — 1000 control steps; episode `robowits_17_formal_3_579ab8c7`.
+- [Full process record](../runtime/robowits-report/cases/robowits_17/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_17/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_17/failure-audit.json)
+
+### Software failure: Cover with Lid
+
+A NumPy Boolean serialization error interrupted carrying and triggered retreat/release. The example illustrates why a controller can exit cleanly while failing the physical task; all five evaluations failed.
+
+- [Failed evaluation video](../runtime/robowits-report/cases/robowits_13/episodes/robowits_13_formal_0_a9f52054/sensors.mp4) — 1000 control steps; episode `robowits_13_formal_0_a9f52054`.
+- [Full process record](../runtime/robowits-report/cases/robowits_13/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_13/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_13/failure-audit.json)
+
+### Generalization failure: Water into Mug
+
+The hold-position controller passed all five rehearsals in the original scene but failed all five evaluation layouts. The videos contrast a successful rehearsal with an unsuccessful evaluation.
+
+- [Successful rehearsal (original scene) video](../runtime/robowits-report/cases/robowits_25/episodes/robowits_25_exploration_3_9922ad4c/sensors.mp4) — 151 control steps; episode `robowits_25_exploration_3_9922ad4c`.
+- [Failed evaluation video](../runtime/robowits-report/cases/robowits_25/episodes/robowits_25_formal_0_e681f464/sensors.mp4) — 1000 control steps; episode `robowits_25_formal_0_e681f464`.
+- [Full process record](../runtime/robowits-report/cases/robowits_25/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_25/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_25/failure-audit.json)
+
+### Trial and revision: Gap Retrieve (lemon)
+
+Slippage during development motivated deeper grasping and regrasp logic. The final controller succeeded in one evaluation layout; the failed example records detection problems during obstacle clearing.
+
+- [Successful evaluation video](../runtime/robowits-report/cases/robowits_03/episodes/robowits_03_formal_3_843d183d/sensors.mp4) — 972 control steps; episode `robowits_03_formal_3_843d183d`.
+- [Failed evaluation video](../runtime/robowits-report/cases/robowits_03/episodes/robowits_03_formal_0_2aa63a9b/sensors.mp4) — 1000 control steps; episode `robowits_03_formal_0_2aa63a9b`.
+- [Full process record](../runtime/robowits-report/cases/robowits_03/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_03/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_03/failure-audit.json)
+
+### Continued exploration: Hold Cup
+
+The continuation added visual cup-orientation feedback and revised timing. The final controller succeeded in one of five evaluation layouts; the failed example could not localize the disk at the initial observation.
+
+- [Successful evaluation video](../runtime/robowits-report/cases/robowits_09_continued/episodes/robowits_09_formal_4_3eae603e/sensors.mp4) — 933 control steps; episode `robowits_09_formal_4_3eae603e`.
+- [Failed evaluation video](../runtime/robowits-report/cases/robowits_09_continued/episodes/robowits_09_formal_0_0d886c8e/sensors.mp4) — 1000 control steps; episode `robowits_09_formal_0_0d886c8e`.
+- [Full process record](../runtime/robowits-report/cases/robowits_09_continued/process.md) · [Tool calls and feedback](../runtime/robowits-report/cases/robowits_09_continued/timeline.json) · [Per-episode failure evidence](../runtime/robowits-report/cases/robowits_09_continued/failure-audit.json)
+
+[Results CSV](../runtime/robowits-report/results.csv) · [Full Chinese report](ROBOWITS_EXPERIMENT_REPORT.md)
+
+**Sharing note:** The result tables and case descriptions are self-contained. Videos and process records remain in the local evidence archive and have not been uploaded to GitHub. To share playable demos, include the accompanying evidence directory with the same relative folder structure.
